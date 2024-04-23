@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body{
+  background: linear-gradient(90deg, hsla(0, 0%, 0%, 1) 0%, hsla(209, 48%, 14%, 1) 100%);
+  color: #fff;
+  font-family: "Anta", sans-serif;
+
+}
+
+
+
+/* font-family: "Anta", sans-serif;
+font-family: "Madimi One", sans-serif;
+font-family: "Poppins", sans-serif; */
+
+/* Error page    */
+
+.navBar .active{
+  color: rgb(16, 161, 161);
+}
+
+.navbar{
+  position: sticky;
+  height: auto;
+}
+
+::-webkit-scrollbar{
+  width: 7px;
+  border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-track{
+  background-color:rgba(16, 161, 161, 0.514) ;
+  border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(16, 161, 161);
+  border-radius: 5px;
+}
+
+/* ============ HERO =============  */
+
+.hero-img{
+  width: 47%;
+}
+
+.hero-text h1{
+  font-size: 100px;
+  letter-spacing: -1px;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+}
+
+.hero-text h3{
+  color:rgb(16, 161, 161) ;
+}
+
+/* =============product Card =============  */
+
+.product-card{
+  width: 30%;
+  height: 500px;
+  box-shadow :5px 2px 15px rgba(23, 212, 212, 0.692); 
+  /* border: 1px solid grey; */
+}
+
+.product-cart{
+    height: 170px;
+    box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
+    transition: all .2s;
+}
+.product-cart:hover{
+    height: 170px;
+    box-shadow: 10px 5px 15px rgba(255, 255, 255, 0.692);
+}
+
+.product-card img{
+  width: 100%;
+  height: 250px;
+}
+
+.product-details h2{
+  color:rgb(23, 212, 212) ;
+  padding-right: 10px;
+}
+
+.product-details-cart h2{
+  color:rgb(23, 212, 212) ;
+  padding-right: 10px;
+}
+
+.product-card p{
+  color: rgb(180, 180, 180);
+}
+
+.product-cart p{
+  color: rgb(180, 180, 180);
+}
+
+.product-card button{
+  background-color: rgb(23, 212, 212);
+  /* width: fit-content; */
+  /* margin: auto ; */
+  margin-top: 10px;
+}
+
+.product-cart button{
+  background-color: rgb(23, 212, 212);
+  /* width: fit-content; */
+  /* margin: auto ; */
+  margin-top: 10px;
+}
+
+.load-btn{
+  box-shadow: 2px 4px 10px cyan;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-top: 50px;
+  transition: box-shadow .2s;
+}
+
+.load-btn:active{
+  transform: scale(1.04);
+}
+
+
+.load-btn:hover{
+  box-shadow: -2px -4px 12px rgb(255, 255, 255);
+}
+
+.cart-amount{
+    box-shadow: 5px 5px 15px rgb(241, 255, 43);
+    transition: all .2s;
+}
+
+.cart-amount:hover{
+        box-shadow: 5px 5px 25px rgb(241, 255, 43);
+}
+
+.cart-amnt-btn{
+    box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
+    border-radius: 15px;
+    padding: 8px 25px;
+    transition: all .2s;
+}
+.cart-amnt-btn:hover{
+    box-shadow: 5px 2px 25px rgba(248, 248, 248, 0.692);
+}
+/* ============ login ============= */
+
+.login-box{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: fit-content;
+  box-shadow: 0px 5px 10px cyan;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.login-box h1{
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Madimi One";
+}
+
+.login-form{
+  position: relative;
+}
+
+.login-form label{
+  font-size: 20px;
+}
+
+.login-form input:active{
+  border: none;
+  box-shadow: 5px 2px 15px white;
+}
+
+.login-form input:focus{
+  border: none;
+  box-shadow: 5px 2px 15px white;
+}
+
+.login-form input{
+  width: 65%;
+  height: 45px;
+  /* margin: 0px auto; */
+  background-color: transparent;
+  box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
+  font-size: 17px;
+  border-radius: 30px;
+  padding: 20px;
+  border: none;
+}
+
+
+.login-form button{
+  width: 100%;
+  /* border: 2px solid white; */
+  height: 40px;
+  border-radius: 25px;
+  font-size: 19px;
+  font-family: "Madimi One";
+  box-shadow: 0px 3px 6px cyan;
+  transition: .2s;
+}
+
+.login-form button:hover{
+  box-shadow: 0px -3px 10px cyan;
+  transform: scale(1.01);
+}
+
+.login-form button:active{
+  transform: scale(1.1);
+}
+
+.login-form h2{
+  margin: 10px 0;
+}
+
+/* ================== login Validation============================  */
+
+.validation-pass{
+  color: rgba(236, 58, 58, 0.788);
+  position: absolute;
+  bottom: -40px;
+}
+
+/* ========================= navbar ========= */
+
+.nav-btn button{
+  background-color: rgb(23, 212, 212);
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 3px 8px #fff;
+}
+
+.nav-btn button:active{
+  box-shadow: 0px -3px 8px #fff;
+  transform: scale(1.04);
+}
+
+
+/* ================================= Dashboard =============================  */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.button {
+  background: transparent;
+  color: rgb(16, 161, 161);
+  box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 10px 4px 20px rgba(255, 255, 255, 0.9);
+  color:rgba(255, 255, 255, 0.9) ;
+}
+
+/* DashboardTabs.css */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.add-button {
+  background-color: transparent;
+  color: rgb(16, 161, 161);
+  border: 1px solid rgb(16, 161, 161);
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.add-button:hover {
+  background-color: rgb(16, 161, 161);
+  color: white;
+}
+
+
+/* ================== Profile =================  */
+
+.profile-btn{
+  box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
+  transition: all .2s;
+}
+
+.profile-btn:hover{
+  box-shadow: 5px 2px 25px rgba(255, 255, 255, 0.692);
+    color: rgb(33, 248, 248);
+}
+.profile-btn:active{
+  transform: scale(1.1);
+}
+
