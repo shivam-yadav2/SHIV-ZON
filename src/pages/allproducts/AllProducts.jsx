@@ -20,7 +20,7 @@ function AllProducts() {
     }, [])
     return (
         <Layout>
-            <div className=' flex flex-wrap justify-center  product-section w-full h-full p-8 '>
+            <div className=' flex flex-wrap justify-center  product-section w-full h-full p-8 mt-12 '>
                 <h1 className='text-4xl font-extrabold m-6 mb-10'>All Products</h1>
                 <div className="product-items justify-between flex flex-wrap gap-11">
                     {

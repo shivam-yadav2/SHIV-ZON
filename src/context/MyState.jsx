@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import MyContext from './MyContext'
 import { toast } from 'react-toastify'
-import { addDoc, collection, getDoc, setDoc, doc, Timestamp, query, onSnapshot, orderBy, deleteDoc } from 'firebase/firestore'
+import { addDoc, collection, getDoc, setDoc, doc, Timestamp, query, onSnapshot, orderBy, deleteDoc, getDocs } from 'firebase/firestore'
 import { auth, fireDB } from '../Firebase/Firebase'
 import { updateEmail, updateProfile } from 'firebase/auth'
+import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 
 function MyState(props) {
@@ -111,8 +112,11 @@ function MyState(props) {
                 await updateProfile(auth.currentUser, {
                     displayName: profileData.displayName,
                     photoURL: profileData.photoURL
+                }).then(() => {
+                    Cookies.set('accessToken', auth.currentUser.accessToken)
                 })
                 await updateEmail(auth.currentUser, profileData.email).then(() => {
+                    Cookies.set('accessToken' , auth.currentUser.accessToken)
                     toast.success("Profile Updated")
                     setTimeout(() => {
                         window.location.href = '/profile'
@@ -138,14 +142,57 @@ function MyState(props) {
     useEffect(() => {
         getProfileData()
         getData()
+        getOrderData()
+        getUserData()
     }, [])
     
     const [totalAmount, setTotalAmount] = useState(null)
 
     const [productInfo, setProductInfo] = useState('')
 
+
+    const [order, setOrder] = useState([]);
+
+    const getOrderData = async () => {
+        
+        try {
+            const result = await getDocs(collection(fireDB, "orders"))
+            const ordersArray = [];
+            result.forEach((doc) => {
+                ordersArray.push(doc.data());
+                
+            });
+            setOrder(ordersArray);
+            console.log(ordersArray)
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+    }
+
+    const [user, setUser] = useState([]);
+
+    const getUserData = async () => {
+        
+        try {
+            const result = await getDocs(collection(fireDB, "user"))
+            const usersArray = [];
+            result.forEach((doc) => {
+                usersArray.push(doc.data());
+                
+            });
+            setUser(usersArray);
+            console.log(usersArray)
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+    }
+
     return (
-        <MyContext.Provider value={{ product, setProduct, addProduct, editHandel, updateProduct, getProduct, getData, deleteProduct, totalAmount, setTotalAmount, handelEditProfile, profileData, setProfileData, getProfileData, getProfile, setGetProfile, productInfo, setProductInfo }}>
+        <MyContext.Provider value={{ product, setProduct, addProduct, editHandel, updateProduct, getProduct, getData, deleteProduct, totalAmount, setTotalAmount, handelEditProfile, profileData, setProfileData, getProfileData, getProfile, setGetProfile, productInfo, setProductInfo, order, user }}>
             {props.children}
         </MyContext.Provider>
     )

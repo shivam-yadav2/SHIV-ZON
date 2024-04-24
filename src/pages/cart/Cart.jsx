@@ -26,12 +26,13 @@ function Cart() {
             temp = temp + parseInt(cartItem.price)
         });
         setTotalAmnt(temp)
-        setTotalAmount(temp)
     }, [cartItems])
 
     const shipping = parseInt(100)
 
     const grandTotal = shipping + totalAmnt;
+    setTotalAmount(grandTotal)
+
     return (
         <>
             <Navbar />

@@ -9,7 +9,9 @@ import MyContext from '../../context/MyContext';
 function DashTab() {
 
   const context = useContext(MyContext)
-  const { getProduct, editHandel, deleteProduct } = context
+  const { getProduct, editHandel, deleteProduct, order, user } = context
+  
+  console.log(order)
 
   // Dummy data for each tab
   const productsData = [
@@ -99,13 +101,13 @@ function DashTab() {
               </tr>
             </thead>
             <tbody>
-              {usersData.map((user, index) => (
+              {user.map((user, index) => (
                 <tr key={index} className='border-b'>
                   <td className="px-4 border-e py-2 text-center">{index + 1}</td>
-                  <td className="px-4 border-e py-2 text-center">{user.userId}</td>
+                  <td className="px-4 border-e py-2 text-center">{user.uid}</td>
                   <td className="px-4 border-e py-2 text-center">{user.name}</td>
                   <td className="px-4 border-e py-2 text-center">{user.email}</td>
-                  <td className="px-4 border-e py-2 text-center">{user.date}</td>
+                  <td className="px-4 border-e py-2 text-center">{user.time}</td>
                 </tr>
               ))}
             </tbody>
@@ -128,15 +130,15 @@ function DashTab() {
               </tr>
             </thead>
             <tbody>
-              {ordersData.map((order, index) => (
+              {order.map((order, index) => (
                 <tr key={index} className='border-b'>
                   <td className="px-4 border-e py-2 text-center">{index + 1}</td>
-                  <td className="px-4 border-e py-2 text-center">{order.orderId}</td>
-                  <td className="px-4 border-e py-2 text-center">{order.name}</td>
-                  <td className="px-4 border-e py-2 text-center">{order.price}</td>
-                  <td className="px-4 border-e py-2 text-center">{order.address}</td>
+                  <td className="px-4 border-e py-2 text-center">{order.paymentId}</td>
+                  <td className="px-4 border-e py-2 text-center">{order.cartItems[0].title}</td>
+                  <td className="px-4 border-e py-2 text-center">{order.cartItems[0].price}</td>
+                  <td className="px-4 border-e py-2 text-center">{order.addressInfo.address}</td>
                   <td className="px-4 border-e py-2 text-center">{order.date}</td>
-                  <td className="px-4 border-e py-2 text-center">{order.status}</td>
+                  <td className="px-4 border-e py-2 text-center">Order placed</td>
                 </tr>
               ))}
             </tbody>

@@ -3,6 +3,7 @@ import { fireDB, auth } from '../../Firebase/Firebase'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Timestamp } from 'firebase/firestore';
 
 function Signup() {
     const [signUpEmail, setSignUpEmail] = useState('')
@@ -21,14 +22,27 @@ function Signup() {
         }
         else {
             try {
-                await createUserWithEmailAndPassword(auth, signUpEmail, signUpPass).then((resp) => {
+                const data = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPass).then((resp) => {
                     const user = resp.user
                     console.log(user)
                     if (user.uid) {
                         toast.success("Account Created Successfully")
+                        
                         navigate('/login')
                     }
                 })
+                const user = {
+                    name: userName,
+                    uid: data.user.uid,
+                    email: data.user.email,
+                    time: Timestamp.now()
+                }
+                const userRef = collection(fireDB, "users")
+                await addDoc(userRef, user);
+                toast.success("Signup Succesfully")
+                setName("");
+                setEmail("");
+                setPassword("");
             } catch (error) {
                 console.log(error)
             }

@@ -4,6 +4,9 @@ import { ShivZonApp, auth } from '../../Firebase/Firebase';
 import { useNavigate } from 'react-router-dom';
 import MyContext from '../../context/MyContext';
 import { getAuth } from 'firebase/auth';
+import Cookies from 'js-cookie'
+import { jwtDecode } from 'jwt-decode';
+
 
 function Profile() {
 
@@ -18,7 +21,12 @@ function Profile() {
     useEffect(() => {
         const data1 = getAuth(ShivZonApp)
         const data = data1.currentUser
-        setGetProfile(data)
+        console.log(data)
+
+        const token = Cookies.get('accessToken')
+        const decode = token && jwtDecode(token)
+        console.log(decode)
+        setGetProfile(decode)
         getProfileData()
     }, [ ])
 
@@ -40,16 +48,16 @@ function Profile() {
                 <div className="bg-white bg-opacity-10 p-8 rounded-lg shadow-lg w-full max-w-md">
                     <div className="flex items-center mb-4">
                         {
-                            getProfile?.photoURL === null ?
+                            getProfile?.picture === null ?
                                 <img src={user?.photoURL} alt="User" className="w-24 h-24 rounded-full mr-4" />
                             :
-                                <img src={getProfile?.photoURL} alt="User" className="w-24 h-24 rounded-full mr-4" />   
+                                <img src={getProfile?.picture} alt="User" className="w-24 h-24 rounded-full mr-4" />   
                         }
                         <div className='ms-4'>
                             {
-                                getProfile?.displayName === null ?
+                                getProfile?.name === null ?
                                     <h2 className="text-2xl font-bold">{user.displayName}</h2>
-                                    : <h2 className="text-2xl font-bold">{getProfile?.displayName}</h2>
+                                    : <h2 className="text-2xl font-bold">{getProfile?.name}</h2>
                             }
                             {
                                 getProfile?.email === null ?

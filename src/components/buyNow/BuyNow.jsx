@@ -3,9 +3,12 @@ import { useSelector } from 'react-redux';
 import { auth, fireDB } from '../../Firebase/Firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import MyContext from '../../context/MyContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const BuyNow = () => {
+
+    const navigate = useNavigate()
 
     const cartItems = useSelector(state => state.CartSlice.cart)
 
@@ -82,12 +85,12 @@ const BuyNow = () => {
         var options = {
             key: "rzp_test_fWMflLeZ9A8pLD",
             key_secret: "nWvqCnxa8CdqeOOskwNN2v3o",
-            amount: totalAmount,
+            amount: (totalAmount)*100,
             currency: "INR",
             order_receipt: 'order_rcptid_' + name,
             name: "SHIV-ZON",
             description: "for testing purpose",
-            handler: function (response) {
+            handler: async function (response) {
                 console.log(response)
                 toast.success('Payment Successful')
 
@@ -108,8 +111,11 @@ const BuyNow = () => {
                     userId: auth?.currentUser.uid,
                     paymentId
                 }
+                console.log(orderInfo , "orderInfo")
+
                 try {
-                    const result = addDoc(collection(fireDB, "orders"), orderInfo)
+                    const result = await addDoc(collection(fireDB, "orders"), orderInfo)
+                    console.log(result , "result")
                 } catch (error) {
                     console.log(error)
                 }
@@ -123,12 +129,13 @@ const BuyNow = () => {
         var pay = new window.Razorpay(options);
         pay.open();
         console.log(pay)
+        navigate('/cart')
     }
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-transparent">
             <div className=" bg-transparent bg-opacity-10 p-8 rounded-lg shadow-lg w-full max-w-md" style={{
-                boxShadow:" 5px 2px 15px rgba(23, 212, 212, 0.692)"
+                boxShadow: " 5px 2px 15px rgba(23, 212, 212, 0.692)"
             }}>
                 <h2 className="text-2xl font-bold mb-4">Buy Now</h2>
 
@@ -155,7 +162,7 @@ const BuyNow = () => {
                     <button onClick={handelPurchase} className="w-[120px] bg-transparent cursor-pointer hover:scale-105 active:scale-110 text-white py-2 px-4 rounded-lg" style={{
                         boxShadow: " 5px 2px 15px rgba(255, 255, 255, 0.9)"
                     }}>Buy Now</button>
-                    
+
                 </div>
 
             </div>
