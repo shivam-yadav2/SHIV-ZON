@@ -36,16 +36,16 @@ const ProductInfo = () => {
 
                         product.id === productInfo ?
 
-                            <div className="bg-transparent  w-[650px] h-[400px] p-4 pe-12 rounded-lg flex justify-between  items-center" style={{
+                            <div className="bg-transparent md:m-0 md:mx-0  py-5  w-full  md:w-[650px] h-[400px] md:p-4 md:pe-12 rounded-lg flex md:flex-row flex-col md:justify-between justify-between items-center  md:items-center" style={{
                                 boxShadow: "5px 5px 25px rgba(255, 255, 255, 0.692)"
                             }}>
-                                <div className="flex items-center w-[350px] h-[250px] overflow-hidden rounded-2xl" style={{
+                                <div className="flex items-center w-[200px] md:w-[350px] h-[250px] overflow-hidden rounded-2xl" style={{
                                     boxShadow: "5px 5px 10px rgba(255, 255, 255, 0.692)"
                                 }}>
-                                    <img src={product.imageUrl} alt={product.name} className="w-[350px] h-[250px] rounded-2xl  mr-4 hover:scale-110  duration-200" />
+                                    <img src={product.imageUrl} alt={product.name} className="w-[200px]  md:w-[350px] h-[250px] rounded-2xl  mr-4 hover:scale-110  duration-200" />
                                 </div>
 
-                                <div className="flex items-start justify-between flex-col ms-7 ">
+                                <div className="flex items-center md:mt-0 mt-4 md:items-start justify-between flex-col ms-7 ">
                                     <div className='mb-4'>
                                         <h2 className="text-lg text-white font-bold">{product.title}</h2>
                                         <p className="text-gray-500">{product.category}</p>

@@ -39,10 +39,10 @@ function Home() {
     return (
         <>
             <Navbar />
-            <div ref={hero} className='w-full flex mt-12'>
-                <img src="/images/hero.png" alt="" className='hero-img' />
+            <div ref={hero} className='w-full flex flex-col md:flex-row justify-center items-center  mt-12'>
+                <img src="/images/hero.png" alt="" className='hero-img md:w-[47%] w-[80%]' />
                 <div className='hero-text'>
-                    <h1 className='mt-[90px] mx-10 hero-txt'>RGB<br />GAMING<br />ACCESSORIES</h1>
+                    <h1 className='md:mt-[90px] mt-[30px] md:mx-10 mx-5 hero-txt md:text-[100px] md:block hidden'>RGB<br />GAMING<br />ACCESSORIES</h1>
                     <h3 className='text-xl mx-10 hero-txt'>FOR TRUE GAMERS</h3>
                 </div>
             </div>

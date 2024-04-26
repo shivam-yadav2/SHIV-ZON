@@ -16,14 +16,14 @@ function Wishlist() {
                 <div className='w-full flex-col gap-11  p-10 h-full flex justify-center '>
                     {
                         productSelector.map((data, index) => (
-                            <div key={index} className=" flex items-center justify-between product-cart p-4 rounded-3xl w-[800px]">
+                            <div key={index} className=" flex md:flex-row flex-col items-center justify-between product-cart p-4 rounded-3xl w-full h-full md:w-[800px]">
                                 <img src={data.imageUrl} alt="" style={{
                                     width: "150px",
                                     height: "100px"
                                 }} className='rounded-3xl w-[150px]  mb-3' />
-                                <div className="product-details-cart p-2 flex w-full items-center justify-between">
-                                    <h2 className='text-xl font-bold ms-3 w-[140px]'>{data.title}</h2>
-                                    <h3 className='text-xl font-semibold w-fit ms-6'>Prize : {data.price}</h3>
+                                <div className="product-details-cart p-2 flex md:flex-row flex-col w-full items-center justify-between">
+                                    <h2 className='text-xl font-bold ms-3 md:w-[140px]'>{data.title}</h2>
+                                    <h3 className='text-xl font-semibold mdw-fit ms-6'>Prize : {data.price}</h3>
                                     <button onClick={() => dispatch(removeToWish({ id: data.id }))} className=' text-xl   p-1 px-3 rounded-3xl active:scale-110'>Remove From WishList</button>
                                 </div>
                             </div>
