@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { fireDB, auth } from '../../Firebase/Firebase'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Timestamp } from 'firebase/firestore';
 
 function Signup() {
@@ -103,7 +103,9 @@ function Signup() {
                             </button>
                         </form>
                         <h2>OR</h2>
-                        <button>Already have an Account</button>
+                        <NavLink to='/login' className='w-full'>
+                            <button>Already have an Account</button>
+                        </NavLink>
                     </div>
                 </div>
             </div>
