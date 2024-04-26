@@ -27,7 +27,7 @@ function Products() {
                 <h1 className='text-4xl font-extrabold m-6 mb-10'>Most Liked! Products</h1>
                 <div className=" justify-between flex sm:flex-row flex-col flex-wrap gap-11">
                     {
-                        getProduct.map((data, index) => (
+                        getProduct.slice(0, 6).map((data, index) => (
                             <div key={index} className=" flex flex-col sm:w-[30%] sm:h-[500px] justify-between  p-4 rounded-3xl" style={{
                                 boxShadow: "5px 2px 15px rgba(23, 212, 212, 0.692)"
                             }}>
@@ -69,4 +69,3 @@ function Products() {
 
 export default Products
 
-    

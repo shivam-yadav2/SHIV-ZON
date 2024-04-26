@@ -42,20 +42,20 @@ function Login() {
     return (
         <>
             <div className='login-container w-full flex h-full items-center justify-center'>
-                <div className="login-box  ">
+                <div className="login-box  md:mx-0 mx-5 h-full  mb-12">
                     <h1>Hey,<br />Welcome Back!</h1>
                     <div className='login-form flex flex-col justify-center items-center'>
                         <form className='flex flex-col gap-12' onSubmit={handelLogin}>
                             <div className="relative">
                                 <div className='flex justify-between items-center'>
-                                    <label htmlFor="login-email">Em@il :</label>
+                                    <label htmlFor="login-email" className='md:text-[20px] text-[18px]'>Em@il :</label>
                                     <input
                                         id='login-email'
                                         value={loginEmail}
                                         onChange={(e) => setLoginEmail(e.target.value)}
                                         placeholder='Enter your email Id'
                                         type="text"
-                                        className='login-input-email' />
+                                        className='login-input-email md:text-[17px] text-[15px]' />
                                 </div>
                                 {
                                     emailErr &&
@@ -65,14 +65,14 @@ function Login() {
                             
                             <div className='relative'>
                                 <div className='flex justify-between items-center ' >
-                                    <label htmlFor="login-pass">P@ssword : </label>
+                                    <label htmlFor="login-pass" className='md:text-[20px] text-[18px]'>P@ssword : </label>
                                     <input
                                         id='login-pass'
                                         value={loginPass}
                                         onChange={(e) => setLoginPass(e.target.value)}
                                         placeholder='Enter your Password'
                                         type="password"
-                                        className='login-input-pass' />
+                                        className='login-input-pass md:text-[17px] text-[15px]' />
                                 </div>
                                 {
                                     passErr &&

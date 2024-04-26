@@ -167,9 +167,7 @@ font-family: "Poppins", sans-serif; */
   position: relative;
 }
 
-.login-form label{
-  font-size: 20px;
-}
+
 
 .login-form input:active{
   border: none;
@@ -187,7 +185,6 @@ font-family: "Poppins", sans-serif; */
   /* margin: 0px auto; */
   background-color: transparent;
   box-shadow: 5px 2px 15px rgba(23, 212, 212, 0.692);
-  font-size: 17px;
   border-radius: 30px;
   padding: 20px;
   border: none;
