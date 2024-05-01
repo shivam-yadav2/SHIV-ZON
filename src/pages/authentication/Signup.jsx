@@ -3,7 +3,7 @@ import { fireDB, auth } from '../../Firebase/Firebase'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Timestamp } from 'firebase/firestore';
+import { Timestamp, addDoc, collection } from 'firebase/firestore';
 
 function Signup() {
     const [signUpEmail, setSignUpEmail] = useState('')
@@ -27,24 +27,32 @@ function Signup() {
                     console.log(user)
                     if (user.uid) {
                         toast.success("Account Created Successfully")
-                        
+                        const userData = {
+                            name: userName,
+                            uid: user.uid,
+                            email: user.email,
+                            time: new Date().toLocaleString(
+                                "en-US",
+                                {
+                                    month: "short",
+                                    day: "2-digit",
+                                    year: "numeric",
+                                }
+                            )
+                        }
+                        const userRef = collection(fireDB, "users")
+                        addDoc(userRef, userData);
+                        // toast.success("Signup Succesfully")
+                        setUserName("");
+                        setSignUpEmail("");
+                        setSignUpPass("");
                         navigate('/login')
                     }
                 })
-                const user = {
-                    name: userName,
-                    uid: data.user.uid,
-                    email: data.user.email,
-                    time: Timestamp.now()
-                }
-                const userRef = collection(fireDB, "users")
-                await addDoc(userRef, user);
-                toast.success("Signup Succesfully")
-                setName("");
-                setEmail("");
-                setPassword("");
+                
             } catch (error) {
-                console.log(error)
+                console.log({error})
+                toast.error(error.code)
             }
         }
 

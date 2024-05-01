@@ -10,7 +10,7 @@ function DashTab() {
 
   const context = useContext(MyContext)
   const { getProduct, editHandel, deleteProduct, order, user } = context
-  
+  console.log(getProduct)
   console.log(order)
 
   // Dummy data for each tab
@@ -103,7 +103,7 @@ function DashTab() {
             <tbody>
               {user.map((user, index) => (
                 <tr key={index} className='border-b'>
-                  <td className="px-4 border-e py-2 text-center">{index + 1}</td>
+                  <td className="px-4 border-e py-2 text-center">{index+1}</td>
                   <td className="px-4 border-e py-2 text-center">{user.uid}</td>
                   <td className="px-4 border-e py-2 text-center">{user.name}</td>
                   <td className="px-4 border-e py-2 text-center">{user.email}</td>

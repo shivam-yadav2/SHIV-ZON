@@ -176,7 +176,8 @@ function MyState(props) {
     const getUserData = async () => {
         
         try {
-            const result = await getDocs(collection(fireDB, "user"))
+            const result = await getDocs(collection(fireDB, "users"))
+            console.log(result)
             const usersArray = [];
             result.forEach((doc) => {
                 usersArray.push(doc.data());
