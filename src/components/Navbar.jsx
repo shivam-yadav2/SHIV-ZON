@@ -9,6 +9,9 @@ import { gsap } from "gsap";
 import { IoReorderThree } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useGSAP } from "@gsap/react";
+import { jwtDecode } from 'jwt-decode';
+import Cookies from 'js-cookie'
+
 
 gsap.registerPlugin(useGSAP);
 
@@ -23,8 +26,12 @@ function Navbar() {
     };
 
     useEffect(() => {
-        const data = auth.currentUser;
-        setUser(data);
+
+        // const data = auth.currentUser;
+        const token = Cookies.get('accessToken')
+        const decode = token && jwtDecode(token)
+        setUser(decode);
+        console.log(user)
     }, []);
 
     async function handelLogout() {

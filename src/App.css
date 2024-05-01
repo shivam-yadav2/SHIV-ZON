@@ -67,7 +67,6 @@ font-family: "Poppins", sans-serif; */
     transition: all .2s;
 }
 .product-cart:hover{
-    height: 170px;
     box-shadow: 10px 5px 15px rgba(255, 255, 255, 0.692);
 }
 
